@@ -17,6 +17,7 @@ namespace NH_bot
             string token = "<enter your bot token here>"; // Bot access token
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
+            await _client.SetGameAsync("No videos from ...");
             // Block this task until the program is closed.
             await Task.Delay(-1);
         }
@@ -31,7 +32,6 @@ namespace NH_bot
         {
             if ((message.Embeds.Count > 0) & (message.Author.Username.Equals("<username without #>")))
             {
-                ulong msgId = message.Id;
                 Console.WriteLine("Got something!");
                 Console.WriteLine(message.Content);
                 foreach (Embed element in message.Embeds)
